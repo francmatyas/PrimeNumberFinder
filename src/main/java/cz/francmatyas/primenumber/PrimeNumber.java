@@ -35,16 +35,19 @@ public class PrimeNumber {
 
             while (cellIterator.hasNext()) {
                 XSSFCell cell = (XSSFCell) cellIterator.next();
+
                 if (cell.getCellType() != CellType.BLANK) {
-                    try {
-                        double inputNumber = Double.parseDouble(cell.getStringCellValue());
-                        if (isInteger(inputNumber) && inputNumber > 0) {
-                            if (isPrimeNumber((int) inputNumber)) {
-                                System.out.println(inputNumber);
+                    new Thread(() -> {
+                        try {
+                            double nextNumber = Double.parseDouble(cell.getStringCellValue());
+                            if (isInteger(nextNumber) && nextNumber > 0) {
+                                if (isPrimeNumber((int) nextNumber)) {
+                                    System.out.println(nextNumber);
+                                }
                             }
+                        } catch (Exception ignored) {
                         }
-                    } catch (Exception ignored) {
-                    }
+                    }).start();
                 }
             }
         }
