@@ -16,15 +16,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class PrimeNumber {
     public static void main(String[] args) throws IOException
     {
-        //System.out.println(Runtime.getRuntime().availableProcessors());
         System.out.println("Paste the full file path into .xlsx document.");
         System.out.flush();
         Scanner scanner = new Scanner(System.in);
 
-
-        //String filePath = scanner.nextLine();
-
-        String filePath = "C:\\Users\\franc\\Desktop\\sample data.xlsx";
+        String filePath = scanner.nextLine();
 
         if(isExcelFile(filePath)) {
             Sheet sheet = parseExcelFile(filePath);
